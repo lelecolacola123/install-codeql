@@ -1,0 +1,45 @@
+easy to use codeql
+CodeQL itself consists of two parts:
+
+CLI: The parsing engine is used to parse the rules we write. Although it is not open source, it can be downloaded directly from the official website and used directly.
+
+SDK: The SDK is completely open source and contains most of the existing vulnerability rules. You can also use it to write custom rules.
+
+1/First download the parsing engine CodeQL CLI, an executable command-line tool that allows you to run CodeQL analysis, create a CodeQL database, and develop and test custom CodeQL queries using the CodeQL CLI.
+https://github.com/github/codeql-cli-binaries/releases
+windows:codeql-win64  linux:codeql-linux64
+
+2/Add to the system environment variable PATH:
+windows: windows Properties Added system path
+linux:sudo vim /etc/profile   "i"to insert     "esc"to quit ":"to save "wq"to save and quit
+
+3/Then download the CodeQL SDK, the standard scanning rules CodeQL libraries and queries. The following repository contains the standard CodeQL library and query statements:
+https://github.com/github/codeql  
+extract to the same root directory as the parsing engine
+
+also can use vscode-codeql-starter
+git clone --recursive https://github.com/github/vscode-codeql-starter/
+git submodule update --init
+git submodule update --remote
+
+4/ install codeql in vscode and add the CLI path to CodeQL
+add cli path in CodeQL in vscode:
+choose CodeQL "setting" --> Extension settings  add the CLI
+windows: D:/path/codeql.exe
+linux: /home/path/codeql
+
+
+5/open starter workspace in vscode
+choose open workspace from file , select vscode-codeql-starter.code-workspace and add
+
+6/add database 
+just like this:
+codeql database create path1 --language = "java" --source-root= path2
+path1 is the create database path
+path2 is the old database path
+
+7/Import database
+in vscode:choose Leftmost column codeql 
+"add a codeql database " -->choose the database
+
+8/choose a ql file and Right-click,click the "Codeql run query" or  "run query on select database"
